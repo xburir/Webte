@@ -1,0 +1,66 @@
+
+
+#map {
+    margin: 10px;
+    border: 3px black solid;
+    height: 700px;
+    width: 75%;
+
+}
+
+.mapWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.moreInfoInMap{
+    font-size: 20px;
+    margin: 0;
+}
+
+.headerInMap{
+    font-family: "Comic Sans MS", serif;
+    font-size: 30px;
+    margin: 0;
+}
+.linkyWrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    justify-content: center;
+}
+
+.linka{
+    width: fit-content;
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+.zelena{
+    background-color: green;
+}
+
+.nocna{
+    background-color: black;
+}
+
+.siva{
+    background-color: gray;
+}
+
+.modra{
+    background-color: mediumslateblue;
+}
+.zlta{
+     background-color: greenyellow;
+ }
+
+.institutesInMap > li{
+    font-size: 20px;
+}
+

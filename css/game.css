@@ -1,0 +1,79 @@
+
+#game{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#board{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card, .card > img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card{
+    position: relative;
+    border: 2px solid black;
+    margin: 20px;
+}
+
+.card > img{
+    position: absolute;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+#gameInfo{
+    text-align: center;
+}
+
+#gameInfo > h1{
+    font-size: xxx-large;
+}
+
+#gameButtonWrapper > button{
+    border: black 2px solid;
+    border-radius: 30%;
+    background-color: lightgreen;
+    font-family: "Comic Sans MS", serif;
+    font-size: xx-large;
+}
+
+.gameInfoModal,
+.gameHintModal,
+.gameRulesModal{
+    display: none;
+    flex-direction: column;
+    align-items: unset;
+}
+
+.gameInfoModal > h2,
+.gameHintModal > h2,
+.gameRulesModal > h2{
+    font-size: xxx-large;
+}
+
+@media only screen and (max-width: 670px){
+    .card, .card > img{
+        width: 100px;
+        height: 100px;
+    }
+    .card{
+        margin: 5px;
+    }
+}
+
+.printGameInfo{
+    display: none;
+}

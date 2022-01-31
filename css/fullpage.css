@@ -1,0 +1,71 @@
+.section {
+    background-color: #66FE69;
+    text-align:center;
+    font-size: 3em;
+}
+
+.fp-controlArrow{
+    position: absolute;
+    z-index: 4000;
+    top: 95%;
+    transform: scale(0.8);
+}
+
+ul{
+    position: relative;
+    z-index: 2;
+}
+
+.sectionWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 60px;
+    align-items: center;
+    gap: 20px;
+}
+
+.sectionWrapper > img {
+    width: 25%;
+    margin: 0;
+    border-radius: 10px;
+    border: 3px black solid ;
+}
+
+.gallery{
+    margin: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+.gallery > img{
+    width: 45%;
+}
+
+.gallery > img:hover{
+    width: 55%;
+}
+
+#uvod{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inside > label{
+    font-family: "Comic Sans MS", serif;
+    font-size: x-large;
+}
+.inside > input{
+    transform: scale(2);
+    width: fit-content;
+}
+
+
+
+
+

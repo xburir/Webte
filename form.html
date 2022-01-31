@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulár</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">O mne</a>
+                </li>
+                <li>
+                    <a href="rozvrh.html">Rozvrh</a>
+                </li>
+                <li>
+                    <a href="zivotopis.html">Životopis</a>
+                </li>
+                <li>
+                    <a href="hover.html">Hover</a>
+                </li>
+                <li class="selected">
+                    <a href="form.html">Formulár</a>
+                </li>
+                <li>
+                    <a href="table.html">Tabuľka</a>
+                </li>
+                <li>
+                    <a href="map.html">Mapa</a>
+                </li>
+                <li>
+                    <a href="graph.html">Graf</a>
+                </li>
+                <li>
+                    <a href="library.html">Knižnica</a>
+                </li>
+                <li>
+                    <a href="fotogaleria.html">Fotogaléria</a>
+                </li>
+                <li>
+                    <a href="game.html">Hra</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <form  onsubmit="return validate()" action="https://iolab.sk/form2mail/form2mail.php" method="post" enctype="multipart/form-data">
+           <input type="hidden" name="apikey" value="62c527d88cfb7b73fdf866fe8442add6">
+           <input type="hidden" name="from" value="xburir@stuba.sk">
+           <input type="hidden" name="sender" value="Richard Búri">
+           <input type="hidden" name="to" value="richardburi35@gmail.com">
+           <input type="hidden" name="subject" value="Richard Búri">
+           <input type="hidden" name="redirectOk" value="https://webte1.fei.stuba.sk/~xburir/stranoocka/form.html">
+           <input type="hidden" name="redirectFalse" value="https://webte1.fei.stuba.sk/~xburir/stranoocka/form.html">
+
+            <div class="wrapper">
+                <!--            udaje-->
+                <div class="outside">
+                    <h3>Údaje</h3>
+                    <div class="inside">
+                        <input type="hidden" id="nameHidden">
+                        <label class="required" for="first_name" >*Meno</label>
+                        <input type="text" id="first_name" placeholder="Meno" required onfocusout="outOfBox(this)" name="Meno">
+                        <label class="required" for="last_name">*Priezvisko</label>
+                        <input  type="text" id="last_name" placeholder="Priezvisko" required onfocusout="outOfBox(this)" name="Priezvisko">
+                    </div>
+                    <div class="inside">
+                        <label class="required" for="age">*Vek</label>
+                        <input type="number" id="age" min="1" max="99" placeholder="celé číslo" required onfocusout="outOfBox(this)" name="Vek">
+                        <label class="required" for="date_of_birth">*Dátum narodenia</label>
+                        <input type="date" id="date_of_birth" required onfocusout="outOfBox(this)" name="Dátum narodenia">
+                    </div>
+                    <div class="inside">
+                        <label class="required" for="email">*Email</label>
+                        <input type="email" id="email" placeholder="xxx@xxx.xx"  required onfocusout="outOfBox(this)" name="Email">
+                    </div>
+                </div>
+                <!--            ako sa ucis programovat-->
+                <div class="outside">
+                    <h3>Ako sa učíš programovať</h3>
+                    <div class="inside">
+                        <label for="check0">V škole</label>
+                        <input class="checkbox" type="checkbox" id="check0" name="Učím sa v škole" value="Áno">
+                    </div>
+                    <div class="inside">
+                        <label for="check1">Na internete</label>
+                        <input class="checkbox" type="checkbox" id="check1" name="Učím sa z internetu" value="Áno">
+                    </div>
+                    <div class="inside">
+                        <label for="check2">Z kníh</label>
+                        <input class="checkbox" type="checkbox" id="check2" name="Učím sa z kníh" value="Áno">
+                    </div>
+                    <div class="inside">
+                        <label for="checkOther">Iné</label>
+                        <input class="checkbox" type="checkbox" id="checkOther" name="Programovať sa učím inak" value="Áno">
+                        <label for="otherInput" id="checkOtherLabel">Ako?</label>
+                        <input type="text" id="otherInput" name="Ako?">
+                    </div>
+                </div>
+                <!--            aky telefon pouzivas-->
+                <div class="outside">
+                    <h3>Aký telefón používaš?</h3>
+                    <div class="inside">
+                        <label for="operatingSystem">Operačný systém</label>
+                        <select id="operatingSystem" name="Operačný systém">
+                            <option value="option0">Nevybrané</option>
+                            <option value="Android">Android</option>
+                            <option value="iOS">iOS</option>
+                        </select>
+                    </div>
+                    <div class="inside">
+                        <label for="model">Model</label>
+                        <select id="model"  name="Model">
+                        </select>
+                    </div>
+                    <div class="inside">
+                        <label for="state">Stav</label>
+                        <select id="state"  name="Stav">
+                        </select>
+                    </div>
+                </div>
+                <!--            strava-->
+                <div class="outside" id="stravaBox">
+                    <div>
+                        <h3>Strava</h3>
+                        <div class="inside">
+                            <div>
+                                <label for="vegan">Vegán</label>
+                                <input class="radio" type="radio" id="vegan"  name="Strava" value="Vegán">
+                            </div>
+                            <div>
+                                <label for="vegetarian">Vegetarián</label>
+                                <input class="radio" type="radio" id="vegetarian" name ="Strava" value="Vegetarián">
+                            </div>
+                            <div>
+                                <label for="pescatarian">Pescatarián</label>
+                                <input class="radio" type="radio" id="pescatarian" name="Strava" value="Pescatarián">
+                            </div>
+                            <div>
+                                <label for="omnivore">Všežravec</label>
+                                <input class="radio" type="radio" id="omnivore" name="Strava" value="Všežravec">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="veganOpt">
+                        <h3>Kvôli čomu si sa stal vegánom?</h3>
+                        <div class="inside">
+                            <div><label for="health">Zdravie</label>
+                                <input class="radio" type="radio" id="health" name="Kvôli čomu si sa stal vegánom?" value="Zdravie">
+                            </div>
+                            <div><label for="animals">Kvôli zvieratám</label>
+                                <input class="radio" type="radio" id="animals" name="Kvôli čomu si sa stal vegánom?" value="Kvôli zvieratám">
+                            </div>
+                            <div><label for="new">Chcel som niečo nové</label>
+                                <input class="radio" type="radio" id="new"  name="Kvôli čomu si sa stal vegánom?" value="Chcel som skúsiť niečo nové">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="vegetarianOpt">
+                        <h3>Keď vieš vynechať mäso, nevedel by si aj ostatné?</h3>
+                        <div class="inside">
+                            <div><label for="yes">Ano</label>
+                                <input class="radio" type="radio" id="yes" name="Keď vieš vynechať mäso, nevedel by si aj ostatné?" value="Ano">
+                            </div>
+                            <div><label for="no">Nie</label>
+                                <input class="radio" type="radio" id="no" name="Keď vieš vynechať mäso, nevedel by si aj ostatné?" value="Nie">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pescatarianOpt">
+                        <h3>Prečo ješ mäso z rýb keď aj to je mäso</h3>
+                        <div class="inside">
+                            <div><label for="dumb">Rybie mäso nie je mäso</label>
+                                <input class="radio" type="radio" id="dumb" value="Rybie mäso nie je mäso" name="Prečo ješ mäso z rýb keď aj to je mäso">
+                            </div>
+                            <div>
+                                <label for="dumb2">Rybie mäso je zdravé</label>
+                                <input class="radio" type="radio" id="dumb2" value="Rybie mäso je zdravé" name="Prečo ješ mäso z rýb keď aj to je mäso">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="omnivoreOpt">
+                        <h3>Nie je ti ľúto všetkých zvierat, ktoré denno denne zomierajú?</h3>
+                        <div class="inside">
+                            <div><label for="nie">Nie</label>
+                                <input class="radio" type="radio" id="nie" name="Nie je ti ľúto všetkých zvierat, ktoré denno denne zomierajú?" value="Nie" >
+                            </div>
+                            <div><label for="nemal">Nemal by som čo iné jesť</label>
+                                <input class="radio" type="radio" id="nemal" name="Nie je ti ľúto všetkých zvierat, ktoré denno denne zomierajú?"  value="Nemal by som čo iné jesť">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--            textarea-->
+                <div class="outside">
+                    <h3>Napíš ešte niečo o sebe</h3>
+                    <div class="inside">
+                        <textarea id="textArea" cols="30" rows="5" placeholder="Sem píš" name="Napíš niečo o sebe"></textarea>
+                    </div>
+                </div>
+                <button type="submit">Odošli</button>
+            </div>
+        </form>
+    </section>
+    <script>
+
+        function outOfBox(input){
+            if(input.value === ""){
+                input.style.border = "red 2px solid";
+            }else{
+                input.style.border = "green 2px solid";
+            }
+            if(input.id === "age" || input.id === "date_of_birth"){
+                if (!validateAge()){
+                    input.style.border = "red 2px solid";
+                    document.getElementById("age").style.border = "red 2px solid";
+                    document.getElementById("date_of_birth").style.border = "red 2px solid";
+                }else{
+                    input.style.border = "green 2px solid";
+                    document.getElementById("age").style.border = "green 2px solid";
+                    document.getElementById("date_of_birth").style.border = "green 2px solid";
+                }
+            }
+            if(input.id === "email"){
+                let validRegex = /^.{3,}@.*.[a-z]{2,4}$/;
+                if(input.value.match(validRegex)){
+                    input.style.border = "green 2px solid";
+                }
+                else{
+                    input.style.border = "red 2px solid";
+                    alert("Zle zadaný email");
+                }
+                let lastDotPos
+                for(let i = 0;i<input.value.length;i++){
+                    if(input.value[i]==="."){
+                        lastDotPos=i;
+                    }
+                }
+                if((input.value.length-lastDotPos)>5 || (input.value.length-lastDotPos)<3){
+                    alert("Zle zadaný email");
+                }
+                
+            }
+        }
+        function validateAge() {
+            let enteredAge = document.getElementById("age").value;
+            let enteredDate = new Date(document.getElementById("date_of_birth").value);
+            let diffInDays = Math.floor((new Date() - enteredDate) / ( 1000 * 60 * 60 * 24) );
+            let calculatedAge = Math.floor(diffInDays / 365);
+            /*console.log(enteredAge);
+            console.log(calculatedAge);*/
+            return enteredAge.toString() === calculatedAge.toString();
+        }
+        function validate(){
+            if(!validateAge()){
+                alert("Zadanému dátumu narodenia nezodpovedá zadaný vek");
+                return false;
+            }
+            return true;
+
+        }
+        function showOther(){
+            document.getElementById("otherInput").style.display="none";
+            document.getElementById("checkOtherLabel").style.display="none";
+            let selected = false;
+            let checkbox = document.getElementById("checkOther");
+            checkbox.onchange = function (){
+                selected = !selected;
+                if(selected){
+                    document.getElementById("checkOtherLabel").style.display="inline";
+                    document.getElementById("otherInput").style.display="inline";
+                }
+                else {
+                    document.getElementById("checkOtherLabel").style.display="none";
+                    document.getElementById("otherInput").style.display="none";
+                    document.getElementById("otherInput").value="";
+                }
+            };
+        }
+        function phone(){
+            let firstSelect = document.getElementById("operatingSystem");
+            let secondSelect = document.getElementById("model");
+            let thirdSelect = document.getElementById("state");
+            firstSelect.onchange = function (){
+                secondSelect.options.length = 0;
+                thirdSelect.options.length = 0;
+                if (firstSelect.value === "Android"){
+                    secondSelect.options[0] = new Option("");
+                    secondSelect.options[1] = new Option("Samsung");
+                    secondSelect.options[2] = new Option("Huawei");
+                    secondSelect.options[3] = new Option("Motorola");
+                    secondSelect.options[4] = new Option("Xiaomi");
+                }
+                if (firstSelect.value === "iOS"){
+                    secondSelect.options[0] = new Option("");
+                    secondSelect.options[1] = new Option("iPhone7");
+                    secondSelect.options[2] = new Option("iPhone8");
+                    secondSelect.options[3] = new Option("iPhoneX");
+                    secondSelect.options[4] = new Option("iPhone13");
+                }
+            };
+            secondSelect.onchange = function (){
+                thirdSelect.options.length = 0;
+                if (secondSelect.value === "Samsung"){
+                    thirdSelect.options[0] = new Option("");
+                    thirdSelect.options[1] = new Option("Čisto nový, nepoužívaný");
+                    thirdSelect.options[2] = new Option("Starší s pár škrabancami");
+                    thirdSelect.options[3] = new Option("Starý ale bez fyzického poškodenia");
+                    thirdSelect.options[4] = new Option("Totálne rozbitý, ale ide");
+                }
+                if (secondSelect.value === "Huawei"){
+                    thirdSelect.options[0] = new Option("");
+                    thirdSelect.options[1] = new Option("Nový bez podpory google služieb");
+                    thirdSelect.options[2] = new Option("Starší s podporou google služieb");
+                }
+                if (secondSelect.value === "Motorola"){
+                    thirdSelect.options[0] = new Option("");
+                    thirdSelect.options[1] = new Option("Čisto nový nadupaný telefón");
+                    thirdSelect.options[2] = new Option("Starý a pomalý");
+                }
+                if (secondSelect.value === "Xiaomi"){
+                    thirdSelect.options[0] = new Option("");
+                    thirdSelect.options[1] = new Option("Funguje skvelo, za tú cenu");
+                    thirdSelect.options[2] = new Option("Starší a pomalší");
+                    thirdSelect.options[3] = new Option("Poškriabaný");
+                    thirdSelect.options[4] = new Option("Čisto nový");
+                }
+                if (secondSelect.value === "iPhone7"){
+                    thirdSelect.options[0] = new Option("");
+                    thirdSelect.options[1] = new Option("Starý ale plynulý");
+                    thirdSelect.options[2] = new Option("Starý a rozbitý");
+                    thirdSelect.options[3] = new Option("Starý a rozbitý a pomalý");
+                }
+                if (secondSelect.value === "iPhone8"){
+                    thirdSelect.options[0] = new Option("");
+                    thirdSelect.options[1] = new Option("Starý no nemal som viac peňazí");
+                    thirdSelect.options[2] = new Option("Starý a rozbitý");
+                    thirdSelect.options[3] = new Option("Starý a rozbitý a pomalý");
+                    thirdSelect.options[4] = new Option("Aspoň môžem povedať že mám iPhone");
+                }
+                if (secondSelect.value === "iPhoneX"){
+                    thirdSelect.options[0] = new Option("");
+                    thirdSelect.options[1] = new Option("Bez škrabancov, plynulý");
+                    thirdSelect.options[2] = new Option("\"Pavučina\" na displeji");
+                    thirdSelect.options[3] = new Option("Celý rozbitý");
+                }
+                if (secondSelect.value === "iPhone13"){
+                    thirdSelect.options[0] = new Option("");
+                    thirdSelect.options[1] = new Option("Čisto nový");
+                    thirdSelect.options[2] = new Option("Raz mi padol, rozbitý na totálku");
+                }
+
+            };
+        }
+        function hideAdditionalFoodQuestions(vegan,vegetarian, pescatarian, omnivore){
+            vegan.style.display = "none";
+            vegetarian.style.display = "none";
+            pescatarian.style.display = "none";
+            omnivore.style.display = "none";
+        }
+        function food(){
+            let vegan = document.getElementById("veganOpt");
+            let vegetarian = document.getElementById("vegetarianOpt");
+            let pescatarian = document.getElementById("pescatarianOpt");
+            let omnivore = document.getElementById("omnivoreOpt");
+
+            hideAdditionalFoodQuestions(vegan,vegetarian,pescatarian,omnivore);
+
+
+            document.getElementById("vegan").onchange = function (){
+                document.getElementById("vegetarian").checked = false;
+                document.getElementById("omnivore").checked = false;
+                document.getElementById("pescatarian").checked = false;
+                hideAdditionalFoodQuestions(vegan,vegetarian,pescatarian,omnivore);
+                vegan.style.display = "inline";
+            };
+
+            document.getElementById("vegetarian").onchange = function (){
+                document.getElementById("vegan").checked = false;
+                document.getElementById("pescatarian").checked = false;
+                document.getElementById("omnivore").checked = false;
+                hideAdditionalFoodQuestions(vegan,vegetarian,pescatarian,omnivore);
+                vegetarian.style.display = "inline";
+            };
+            document.getElementById("pescatarian").onchange = function (){
+                document.getElementById("vegan").checked = false;
+                document.getElementById("vegetarian").checked = false;
+                document.getElementById("omnivore").checked = false;
+                hideAdditionalFoodQuestions(vegan,vegetarian,pescatarian,omnivore);
+                pescatarian.style.display = "inline";
+            };
+            document.getElementById("omnivore").onchange = function (){
+                document.getElementById("vegan").checked = false;
+                document.getElementById("pescatarian").checked = false;
+                document.getElementById("vegetarian").checked = false;
+                hideAdditionalFoodQuestions(vegan,vegetarian,pescatarian,omnivore);
+                omnivore.style.display = "inline";
+            };
+
+        }
+
+        showOther();
+        phone();
+        food();
+    </script>
+</body>
+</html>

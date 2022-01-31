@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Graf</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="amplitude-changer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.1.1/chartjs-plugin-zoom.min.js" integrity="sha512-NxlWEbNbTV6acWnTsWRLIiwzOw0IwHQOYUCKBiu/NqZ+5jSy7gjMbpYI+/4KvaNuZ1qolbw+Vnd76pbIUYEG8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">O mne</a>
+                </li>
+                <li>
+                    <a href="rozvrh.html">Rozvrh</a>
+                </li>
+                <li>
+                    <a href="zivotopis.html">Životopis</a>
+                </li>
+                <li>
+                    <a href="hover.html">Hover</a>
+                </li>
+                <li>
+                    <a href="form.html">Formulár</a>
+                </li>
+                <li>
+                    <a href="table.html">Tabuľka</a>
+                </li>
+                <li>
+                    <a href="map.html">Mapa</a>
+                </li>
+                <li class="selected">
+                    <a href="graph.html">Graf</a>
+                </li>
+                <li>
+                    <a href="library.html">Knižnica</a>
+                </li>
+                <li>
+                    <a href="fotogaleria.html">Fotogaléria</a>
+                </li>
+                <li>
+                    <a href="game.html">Hra</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="outside chartWrapper">
+        <div class="chart">
+            <canvas id="myChart" width="400"></canvas>
+        </div>
+        <div class="graphSettings">
+            <div class="outside">
+                <h1>Zobrazenie hodnôt</h1>
+                <div class="inside">
+                    <label for="checkBoxForSinus">Sinus</label>
+                    <input type="checkbox" id="checkBoxForSinus" class="graphCheckbox">
+                </div>
+                <div class="inside">
+                    <label for="checkBoxForCosinus">Cosinus</label>
+                    <input type="checkbox" id="checkBoxForCosinus" class="graphCheckbox">
+                </div>
+            </div>
+
+
+            <button type="button" onclick="buttonClick()">Koniec</button>
+            <div class="outside">
+                <amplitude-changer></amplitude-changer>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        let constant = 6;
+
+
+        function messageParser(event){
+            const data  = JSON.parse(event.data);
+            myChart.data.labels.push(data.x);
+            myChart.data.datasets[0].data.push(data.y1*constant);
+            myChart.data.datasets[1].data.push(data.y2*constant);
+            myChart.update();
+        }
+
+        let numberGenerator  = new EventSource("https://iolab.sk/evaluation/sse/sse.php");
+        numberGenerator.addEventListener("message", messageParser)
+
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'SIN',
+                    data: [],
+                    backgroundColor: [
+                        'red'
+                    ],
+                    borderColor: [
+                        'red'
+                    ],
+                    borderWidth: 1
+                },{
+                    label: 'COS',
+                    data: [],
+                    backgroundColor: [
+                        'blue'
+                    ],
+                    borderColor: [
+                        'blue'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            }
+        });
+
+
+        function buttonClick(){
+            numberGenerator.removeEventListener("message", messageParser)
+            myChart.options= {
+                plugins: {
+                    zoom: {
+                        zoom: {
+                            wheel: {
+                                enabled: true,
+                            },
+                            pinch: {
+                                enabled: true
+                            },
+                            mode: 'xy',
+                        }
+                    }
+                }
+            }
+            myChart.update();
+        }
+
+        document.getElementById("checkBoxForSinus").checked = true;
+        document.getElementById("checkBoxForCosinus").checked = true;
+        document.getElementById("checkBoxForSinus").onchange = function (){
+            if(document.getElementById("checkBoxForSinus").checked){
+                myChart.setDatasetVisibility(0, true);
+            }else{
+                myChart.setDatasetVisibility(0, false);
+            }
+            myChart.update();
+
+        }
+        document.getElementById("checkBoxForCosinus").onchange = function (){
+            if(document.getElementById("checkBoxForCosinus").checked){
+                myChart.setDatasetVisibility(1, true);
+            }else{
+                myChart.setDatasetVisibility(1, false);
+            }
+            myChart.update();
+
+        }
+
+        window.customElements.define("amplitude-changer",AmplitudeChanger);
+    </script>
+
+</body>
+</html>

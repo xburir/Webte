@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <link rel="stylesheet" href="css/printGame.css" media="print">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="pictures/game_icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="pictures/game_icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="pictures/game_icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="pictures/game_icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="pictures/game_icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="pictures/game_icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="pictures/game_icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="pictures/game_icons/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="pictures/game_icons/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="pictures/game_icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="pictures/game_icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="pictures/game_icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="pictures/game_icons/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <meta name="theme-color" content="#fff"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="A game which we had to program for WEBTECH">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">O mne</a>
+                </li>
+                <li>
+                    <a href="rozvrh.html">Rozvrh</a>
+                </li>
+                <li>
+                    <a href="zivotopis.html">Životopis</a>
+                </li>
+                <li>
+                    <a href="hover.html">Hover</a>
+                </li>
+                <li>
+                    <a href="form.html">Formulár</a>
+                </li>
+                <li>
+                    <a href="table.html">Tabuľka</a>
+                </li>
+                <li>
+                    <a href="map.html">Mapa</a>
+                </li>
+                <li>
+                    <a href="graph.html">Graf</a>
+                </li>
+                <li>
+                    <a href="library.html">Knižnica</a>
+                </li>
+                <li>
+                    <a href="fotogaleria.html">Fotogaléria</a>
+                </li>
+                <li class="selected">
+                    <a href="game.html">Hra</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+
+
+
+
+    <div id="game" class="outside">
+
+
+        <div id="gameInfo">
+            <h1>Rixeso (Pexeso made by Richard)</h1>
+            <div class="printGameInfo">
+                <div class="outside">
+                    <h2>Info</h2>
+                    <p>- instead of clicking, you have to drag one card on the other to pair them</p>
+                    <p>- to make the game harder and to make you think a little bit more, after pairing, the cards are switched</p>
+                    <p>- cards are deleted after matching correctly</p>
+                    <p>- after you have matched all the cards, you are going onto the next level automatically</p>
+                </div>
+                <div class="outside">
+                    <h2>Hint</h2>
+                    <p>- drag one card on another</p>
+                    <p>- the cards are shown after you drag them, try to remember them and pair them accordingly</p>
+                </div>
+                <div class="outside">
+                    <h2>Rules</h2>
+                    <p>- no checking the pictures by inspecting elements</p>
+                    <p>- no deleting elements</p>
+                </div>
+            </div>
+
+        </div>
+        <div id="gameButtonWrapper" class="inside">
+            <button onclick="showModal('info')">Info</button>
+            <button onclick="showModal('hint')">Hint</button>
+            <button onclick="showModal('rules')">Rules</button>
+        </div>
+        <p id="levelShower">Level:</p>
+
+        <div id="board"></div>
+    </div>
+    <div class="cover">
+        <div class="modal gameInfoModal">
+            <button type="button" onclick="closeModal()">x</button>
+            <div class="outside">
+                <h2>Info</h2>
+                <p>- instead of clicking, you have to drag one card on the other to pair them</p>
+                <p>- to make the game harder and to make you think a little bit more, after pairing, the cards are switched</p>
+                <p>- cards are deleted after matching correctly</p>
+                <p>- after you have matched all the cards, you are going onto the next level automatically</p>
+            </div>
+
+
+        </div>
+        <div class="modal gameHintModal">
+            <button type="button" onclick="closeModal()">x</button>
+            <div class="outside">
+                <h2>Hint</h2>
+                <p>- drag one card on another</p>
+                <p>- the cards are shown after you drag them, try to remember them and pair them accordingly</p>
+            </div>
+
+        </div>
+        <div class="modal gameRulesModal">
+            <button type="button" onclick="closeModal()">x</button>
+            <div class="outside">
+                <h2>Rules</h2>
+                <p>- no checking the pictures by inspecting elements</p>
+                <p>- no deleting elements</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let board = document.querySelector("#board")
+
+        function flipCards(){
+            let cards = document.querySelectorAll(".card")
+            cards.forEach(
+                card => {
+                    card.children[0].classList.toggle("hidden")
+                    card.children[1].classList.toggle("hidden")
+                }
+           )
+
+        }
+
+        function flipCard(one,two) {
+            const state = sortablee.option("disabled");
+            sortablee.option("disabled", !state);
+            one.children[0].classList.toggle("hidden")
+            one.children[1].classList.toggle("hidden")
+            two.children[0].classList.toggle("hidden")
+            two.children[1].classList.toggle("hidden")
+        }
+
+        function shuffleCards(){
+            let  cards = document.querySelectorAll(".card")
+            let allElements = []
+            let length = cards.length
+            while(length--){
+                allElements[allElements.length] = cards[length]
+            }
+            length = cards.length
+            let shuffled = []
+            while (length--) {
+                let random = Math.floor(Math.random() * allElements.length),
+                    randEl = allElements[random].cloneNode(true);
+                allElements.splice(random, 1);
+                shuffled[shuffled.length] = randEl;
+            }
+            length = cards.length
+            while (length--) {
+                cards[length].parentNode.insertBefore(shuffled[length], cards[length].nextSibling);
+                cards[length].parentNode.removeChild(cards[length]);
+            }
+        }
+
+        const addCard = function (images,number) {
+            const shuffledPics = images.sort((a, b) => 0.5 - Math.random());
+            for(let i = 0;i<number;i++){
+                for(let o = 0 ; o<2; o++){
+                    const backImage = document.createElement("img")
+                    backImage.src = "pictures/photogalery/back.png"
+                    backImage.alt = "Hidden image"
+                    const frontImage = document.createElement("img")
+                    frontImage.src = shuffledPics[i].filename
+                    frontImage.alt = "Showed image"
+                    let card = document.createElement("div")
+                    card.dataset.number = i.toString()
+                    frontImage.classList.add("front")
+                    backImage.classList.add("back")
+                    frontImage.classList.add("hidden")
+                    card.classList.add("card")
+                    card.appendChild(frontImage)
+                    card.appendChild(backImage)
+                    board.appendChild(card)
+                }
+            }
+        }
+
+        const loadImages = (number) => {
+            board.innerHTML = ""
+            document.getElementById("levelShower").innerHTML = "Level: "+number.toString()
+            if(number === 13){
+                document.getElementById("levelShower").innerHTML = "You won the game!"
+                setTimeout(()=>{
+                    loadImages(1)
+                },3000)
+                return
+            }
+            fetch("./pexeso.json")
+                .then(res => res.json())
+                .then(data =>{
+                    addCard(data,number)
+                    shuffleCards()
+                    // flipCards()
+                    setTimeout(()=>{
+                        // flipCards()
+                    },2000)
+
+                })
+
+        }
+
+        const sortablee = Sortable.create(board, {
+            swap: true,
+            animation: 150,
+            onEnd: function (evt){
+                let cards = document.querySelectorAll(".card")
+                let old = evt.oldIndex
+                let neww = evt.newIndex
+                let first = cards.item(old)
+                let second = cards.item(neww)
+
+                if( first !== second ){
+
+                    flipCard(first,second)
+
+                    setTimeout(()=>{
+                        flipCard(first,second)
+                        if(first.dataset.number === second.dataset.number){
+                            first.remove()
+                            second.remove()
+                            cards = document.querySelectorAll(".card")
+                            if(cards.length===0){
+                                numberOfCards = numberOfCards+1
+                                localStorage.setItem("onLevel", numberOfCards);
+                                loadImages(numberOfCards)
+                            }
+                        }
+                    },1000)
+
+                }
+
+
+
+
+
+            }
+        });
+
+        function showModal(button){
+            document.querySelector(".cover").style.display = "flex";
+            if(button === "info"){
+                document.querySelector(".gameInfoModal").style.display = "flex"
+            }
+            if(button === "hint"){
+                document.querySelector(".gameHintModal").style.display = "flex"
+            }
+            if(button === "rules"){
+                document.querySelector(".gameRulesModal").style.display = "flex"
+            }
+            document.querySelector(".cover").style.height = document.querySelector("html").scrollHeight+"px"
+            document.querySelector(".cover").style.width = document.querySelector("html").scrollWidth+"px"
+        }
+
+
+        function closeModal(){
+            document.querySelector(".cover").style.display = "none";
+            document.querySelectorAll(".modal").forEach(modalWindow =>
+            modalWindow.style.display = "none")
+        }
+
+        //closeModal()
+
+        let numberOfCards
+        if(localStorage.getItem("onLevel") !== null){
+            numberOfCards = parseInt(localStorage.getItem("onLevel"))
+            loadImages(numberOfCards)
+        }else{
+            numberOfCards = 1
+            loadImages(1)
+        }
+
+        navigator.serviceWorker.register("./serviceWorker.js")
+            .then((reg)=>{
+                console.log("serviceWorker",reg);
+            })
+            .catch(err=>{
+                console.log("error",err);
+            })
+
+    </script>
+
+</body>
+</html>

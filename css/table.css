@@ -1,0 +1,78 @@
+
+
+
+.form button{
+    height: 40px;
+    margin: 4% 20%;
+    font-size: 30px;
+    display: none;
+
+}
+
+.form label,.form input{
+    margin: 5px;
+    font-size: x-large;
+    font-family: "Comic Sans MS", serif;
+    text-align: center;
+}
+
+.form{
+    margin: 0 30%;
+    width: auto;
+}
+
+#bad_x,#bad_y{
+    color: red;
+    display: none;
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+
+.cover{
+    display: none;
+    justify-content: center;
+    z-index: 100;
+    top: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal{
+    display: flex;
+    position: relative;
+    height: fit-content;
+    width: auto;
+    max-width: 90vw;
+    z-index: 150;
+    top: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px 0 30px 30px;
+    border: black 3px solid;
+    background-color: #66FE69;
+}
+
+
+.modal td{
+    background-color: #cefc72;
+}
+
+
+.modal button{
+    top: -22px;
+    right: -22px;
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    border: black 3px solid;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+

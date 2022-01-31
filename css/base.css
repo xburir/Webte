@@ -1,0 +1,105 @@
+
+html,body{
+    background-color: #66FE69;
+    padding: 80px 0 0 0;
+    margin: 0;
+
+}
+
+article {
+
+    border: 2px solid #88E65C;
+    background-color: #CEFC72;
+    margin: 30px 10px;
+    padding: 10px;
+}
+
+article::after{
+    clear: left;
+    content: "";
+    display: block;
+}
+
+#mypicture{
+    float: left;
+    padding-right: 20px;
+}
+
+li.selected{
+    background-color: #FEEE66;
+}
+
+aside{
+    width: 25%;
+    padding: 5px;
+    margin: 5px;
+    float: right;
+    text-align: right;
+}
+
+aside::after{
+    clear: right;
+    content: " ";
+    display: block;
+}
+
+aside > p{
+    font-size: 30px;
+}
+
+li,p{
+    font-size: 30px ;
+    font-family: "Comic Sans MS", serif;
+}
+
+
+h1,h2{
+    font-size: 200%;
+    text-align: center;
+    font-family: "Comic Sans MS", serif;
+}
+
+h3{
+    text-align: center;
+}
+
+.rozvrh table,.rozvrh td,.rozvrh th,.rozvrh tr{
+
+    table-layout: fixed;
+    border: 2px solid black;
+    min-width: 70px;
+    height: 70px;
+    border-collapse: collapse;
+    text-align: center;
+    margin: auto;
+    background-color: white;
+
+}
+
+td.prednaska{
+    background-color: aqua;
+}
+td.cvicenie{
+    background-color: aquamarine;
+}
+td.konzultacie{
+    background-color: cadetblue;
+}
+td.telesna{
+    background-color: darkcyan;
+}
+th.legenda, tr.legenda>th{
+    background-color: gold;
+}
+
+tr,th{
+    font-family: "Comic Sans MS", serif;
+}
+
+#lavy {
+    background-color: darkolivegreen;
+}
+
+#pravy {
+    background-color: darkgreen;
+}

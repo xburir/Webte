@@ -1,0 +1,90 @@
+.outside{
+    display: flex;
+    background-color: #cefc72;
+    flex-direction: column;
+    padding: 1%;
+    margin: 1%;
+    border: black 3px solid;
+    border-radius: 20px;
+    width: 95%;
+}
+
+
+.inside{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+
+
+}
+
+.wrapper h3,.wrapper label,.wrapper input,.wrapper select{
+    margin: 5px;
+    font-size: x-large;
+    font-family: "Comic Sans MS", serif;
+    text-align: center;
+}
+
+.inside label{
+    max-width: 30%;
+    width: 30%;
+}
+.inside input,.inside select{
+    max-width: 60%;
+    width: 60%;
+}
+
+.wrapper  input,.wrapper select,.wrapper textarea,.wrapper button{
+    border: black 2px solid;
+}
+
+
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.wrapper  button,.wrapper textarea {
+    font-size: xx-large;
+    text-align: center;
+    justify-content: center;
+}
+
+.wrapper button{
+    margin: 100px;
+}
+
+.wrapper textarea{
+    margin: 20px;
+    width: 100%;
+}
+
+@media screen and (max-width: 767px){
+    .wrapper{
+        display: inline;
+    }
+}
+
+#stravaBox {
+    flex-direction: column;
+    text-align: center;
+}
+
+.required{
+    font-weight: bold;
+}
+
+.radio,.checkbox{
+    height: 30px;
+}
+
+.mapFormWrapper button{
+    margin: 10px;
+    width: 200px;
+    height: 60px;
+    font-size: x-large;
+}

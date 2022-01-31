@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Ukážka knižnice</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.css" integrity="sha512-TD/aL30dNLN0VaHVoh9voFlNi7ZuWQYtV4bkIJv2ulZ8mEEkZJ7IyGvDthMKvIUwzLmPONnjQlAi55HTERVXpw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/fullpage.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">O mne</a>
+                </li>
+                <li>
+                    <a href="rozvrh.html">Rozvrh</a>
+                </li>
+                <li>
+                    <a href="zivotopis.html">Životopis</a>
+                </li>
+                <li>
+                    <a href="hover.html">Hover</a>
+                </li>
+                <li>
+                    <a href="form.html">Formulár</a>
+                </li>
+                <li>
+                    <a href="table.html">Tabuľka</a>
+                </li>
+                <li>
+                    <a href="map.html">Mapa</a>
+                </li>
+                <li>
+                    <a href="graph.html">Graf</a>
+                </li>
+                <li class="selected">
+                    <a href="library.html">Knižnica</a>
+                </li>
+                <li>
+                    <a href="fotogaleria.html">Fotogaléria</a>
+                </li>
+                <li>
+                    <a href="game.html">Hra</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="uvod">
+        <p>Vyber si ukážku</p>
+        <div class="inside">
+            <label for="ukazka1">Ukážka1: Normálne scrollovanie, scroll bar zapnutý</label>
+            <input type="radio" id="ukazka1">
+        </div>
+        <div class="inside">
+            <label for="ukazka2">Ukážka2: Nekonečné scrollovanie</label>
+            <input type="radio" id="ukazka2">
+        </div>
+        <div class="inside">
+            <label for="ukazka3">Ukážka3: Funkcia pri zmene sekcie</label>
+            <input type="radio" id="ukazka3">
+        </div>
+
+
+    </div>
+
+    <div id="fullpage">
+        <div class="section section1">
+            <div class="sectionWrapper">
+                <div class="sectionText">
+                    <h3>Moje mačky</h3>
+                    <p>
+                        Volajú sa Leo a Remy. Mám ich oboch veľmi rád. <br>
+                        Väčšinou sa aj oni majú radi, no občas sa pobijú. Sú to špekulanti a veľmi radi sa v noci naháňajú, akurát vtedy, keď každý ide spať.
+                    </p>
+                </div>
+                <img src="pictures/leoremyspolu.jpg" alt="Moje mačky na jednej fotke">
+            </div>
+        </div>
+        <div class="section section2">
+            <div class="slide">
+                <div class="sectionWrapper">
+                    <div class="sectionText">
+                        <h3>Remy</h3>
+                        <p>
+                            Tento sa volá Remy.<br>
+                            Je to kríženec britskej modrej a obyčajnej pouličnej mačky. Preto má také dlhé chlpy, krátke nohy a obrovskú hlavu.
+                            <br>
+                            Je celkom protivný a vždy si začína do Lea. Väčšinou aj tak prehrá keďže je viac geneticky upravený na život vnútri.
+                            <br>
+                            Dovolím si tvrdiť, že z mojej rodiny ma má najradšej.
+                        </p>
+                    </div>
+                    <img src="pictures/remy.jpg" alt="Mačka Remy">
+                </div>
+            </div>
+            <div class="slide">
+                <h3>Foto galéria - Remy</h3>
+                <div class="gallery">
+                    <img src="pictures/remy/1.jpg" alt="obrázok o mačke">
+                    <img src="pictures/remy/2.jpg" alt="obrázok o mačke">
+                    <img src="pictures/remy/3.jpg" alt="obrázok o mačke">
+                    <img src="pictures/remy/4.jpg" alt="obrázok o mačke">
+                    <img src="pictures/remy/5.jpg" alt="obrázok o mačke">
+                    <img src="pictures/remy/6.jpg" alt="obrázok o mačke">
+                    <img src="pictures/remy/7.jpg" alt="obrázok o mačke">
+                    <img src="pictures/remy/8.jpg" alt="obrázok o mačke">
+                </div>
+
+            </div>
+        </div>
+        <div class="section section3">
+            <div class="slide">
+
+                <div class="sectionWrapper">
+                    <div class="sectionText">
+                        <h3>Leo</h3>
+                        <p>
+                            Tento sa volá Leo.<br>
+                            Je to obyčajná mačka pouličná. Našli sme ho vlastne aj na ulici v krabici.
+                            <br>
+                            Je starostlivý veľký brat.
+                            <br>
+                            Má už 11 rokov.
+                        </p>
+                    </div>
+                    <img src="pictures/leo.jpg" alt="Mačka Leo">
+                </div>
+            </div>
+            <div class="slide">
+                <h3>Foto galéria - Leo</h3>
+                <div class="gallery">
+                    <img src="pictures/leo/1.jpg" alt="obrázok o mačke">
+                    <img src="pictures/leo/2.jpg" alt="obrázok o mačke">
+                    <img src="pictures/leo/3.jpg" alt="obrázok o mačke">
+                    <img src="pictures/leo/4.jpg" alt="obrázok o mačke">
+
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js" integrity="sha512-gSf3NCgs6wWEdztl1e6vUqtRP884ONnCNzCpomdoQ0xXsk06lrxJsR7jX5yM/qAGkPGsps+4bLV5IEjhOZX+gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.extensions.min.js" integrity="sha512-v0jjVvFpZqb1BcXhgLbaBDRKwZ09IpWFZL5NHTNbW9MlSjhZihkxEz2uNeMGd6HuK1qnSEL6JdyTr24ZHlgKow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        document.getElementById("fullpage").style.display = "none";
+
+        //príklad 1
+        document.getElementById("ukazka1").onchange = () => {
+
+            new fullpage('#fullpage', {
+                navigation: true,
+                navigationTooltips: ["Domov","Remy","Leo"],
+                navigationPosition: 'left',
+                controlArrows: true,
+                slidesNavigation: true,
+                autoScrolling: false
+            });
+
+            document.getElementById("fullpage").style.display = "block";
+            document.getElementById("uvod").style.display = "none";
+        }
+
+        //príklad 2
+        document.getElementById("ukazka2").onchange = () => {
+
+            new fullpage('#fullpage', {
+                navigation: true,
+                navigationTooltips: ["Domov","Remy","Leo"],
+                navigationPosition: 'left',
+                controlArrows: true,
+                slidesNavigation: true,
+                continuousHorizontal: true,
+                continuousVertical: true
+            });
+
+            document.getElementById("fullpage").style.display = "block";
+            document.getElementById("uvod").style.display = "none";
+        }
+
+        //príklad 3
+        document.getElementById("ukazka3").onchange = () => {
+
+            new fullpage('#fullpage', {
+                navigation: true,
+                navigationTooltips: ["Domov","Remy","Leo"],
+                navigationPosition: 'left',
+                controlArrows: true,
+                slidesNavigation: true,
+                continuousHorizontal: true,
+                continuousVertical: true,
+                onLeave: function(origin, destination, direction){
+                    let sound = new Audio("sounds/mnau.mp3");
+                    sound.play();
+                }
+            });
+
+            document.getElementById("fullpage").style.display = "block";
+            document.getElementById("uvod").style.display = "none";
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

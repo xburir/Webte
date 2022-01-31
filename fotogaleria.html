@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Fotogaléria</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">O mne</a>
+                </li>
+                <li>
+                    <a href="rozvrh.html">Rozvrh</a>
+                </li>
+                <li>
+                    <a href="zivotopis.html">Životopis</a>
+                </li>
+                <li>
+                    <a href="hover.html">Hover</a>
+                </li>
+                <li>
+                    <a href="form.html">Formulár</a>
+                </li>
+                <li>
+                    <a href="table.html">Tabuľka</a>
+                </li>
+                <li>
+                    <a href="map.html">Mapa</a>
+                </li>
+                <li>
+                    <a href="graph.html">Graf</a>
+                </li>
+                <li>
+                    <a href="library.html">Knižnica</a>
+                </li>
+                <li class="selected">
+                    <a href="fotogaleria.html">Fotogaléria</a>
+                </li>
+                <li>
+                    <a href="game.html">Hra</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="outside">
+        <div class="inside">
+            <label for="filter">Filter</label>
+            <input type="text" id="filter">
+        </div>
+    </div>
+
+    <div class="cover">
+        <div class="modal">
+            <button type="button" onclick="closeModal()">x</button>
+            <img src="pictures/photogalery/play.png" alt="Selected photo" id="selectedPhoto">
+            <div class="navigation left-arrow"><img src="pictures/photogalery/prev.png" alt=""></div>
+            <div class="navigation right-arrow"><img src="pictures/photogalery/next.png" alt=""></div>
+            <div class="info-about-picture outside">
+                <div class="name-of-pic"><h2 id="pic-name">Picture Name</h2></div>
+                <div class="about-pic"><p id="pic-info">This is info about the shown picture</p></div>
+                <div id="playStopButtonWrapper">
+
+                    <div class="inside">
+                        <img src="pictures/photogalery/play.png" alt="playStopButton" id="playStopButton"/>
+                        <div>
+                            <label for="pauseTime" id="pauseTimeLabel">Čas na jednej snímke: 2s</label>
+                            <input type="range" id="pauseTime" min="1" max="5" value="2">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <section id="fotogaleria">
+        <h2>Fotogaléria</h2>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.js" integrity="sha512-Fc8SDJVBwajCGX0A9z8lBeRPaCjR25Ek577z9PtQLB7CLBz7Mw1XhjbcD2yDWrGszL/uezKGidtGCng6Fhz3+A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        let interval
+        function rightArrow(){
+            let openedImage = getIndex(document.querySelector("#selectedPhoto"))
+            openImage(section.children[(openedImage+1) % section.childElementCount])
+        }
+        function leftArrow() {
+            let openedImage = getIndex(document.querySelector("#selectedPhoto"))
+            if(openedImage === 0){
+                openedImage = section.childElementCount
+            }
+            openImage(section.children[(openedImage-1) % section.childElementCount])
+        }
+        let timeOnImage = document.getElementById("pauseTime").value
+        document.getElementById("pauseTime").oninput = function (){
+            timeOnImage = document.getElementById("pauseTime").value
+            document.getElementById("pauseTimeLabel").innerHTML = "Čas na jednej snímke: "+timeOnImage+"s"
+        }
+        document.getElementById("pauseTime").onchange = function (){
+            playing = true
+            playButtonToggle()
+        }
+        function playButtonToggle(){
+            playing = !playing;
+            if(playing === true){
+                document.querySelector("#playStopButton").src = "pictures/photogalery/pause.png";
+                interval = setInterval(rightArrow,timeOnImage*1000);
+            }else{
+                clearInterval(interval)
+                document.querySelector("#playStopButton").src = "pictures/photogalery/play.png";
+            }
+        }
+        document.querySelector("#playStopButton").addEventListener("click",playButtonToggle)
+        document.querySelector(".modal").addEventListener("mousemove",()=>{
+            document.querySelectorAll(".navigation").forEach((element)=>{
+                element.style.transition = "0.2s"
+                element.style.opacity = 1
+            })
+            let counter = 0;
+            let interval2 = setInterval(()=>{
+                counter++
+                if(counter > 1){
+                    document.querySelectorAll(".navigation").forEach((element)=>{
+                        element.style.transition = "1s"
+                        element.style.opacity = 0
+                    })
+                    clearInterval(interval2)
+                }
+            },1000)
+
+        })
+
+
+        let mouseMoved = false;
+        const section = document.getElementById("fotogaleria");
+        const filter = document.querySelector("input");
+        let filterString = localStorage.getItem("filter")
+        if(filterString === null){
+            filterString = ""
+        }
+        else{
+            filter.value = filterString;
+        }
+        let playing = false;
+        let order = JSON.parse(localStorage.getItem("order"));
+        filter.oninput = function (){
+            filterString = this.value;
+            loadImages(filterString);
+            localStorage.setItem("filter",filterString)
+            ord.sort(order, true);
+            mouseMoved = false;
+        }
+        const ord = Sortable.create(section, {
+            group: 'section',
+            ghostClass: 'blue-background-class',
+            animation: 100,
+            onUnchoose: function (event) {
+                localStorage.setItem("order", JSON.stringify(ord.toArray()));
+            }
+        })
+        let getIndex  = function (thumbnail){
+            let chosenPic = 0;
+            for(let i = 0; i < section.childElementCount;i++){
+                if(thumbnail.src === section.children[i].src){
+                    break;
+                }
+                chosenPic++;
+            }
+            return chosenPic
+        }
+        const openImage = function (thumbnail) {
+            document.querySelector(".cover").style.display = "flex";
+            document.querySelector("#selectedPhoto").src = thumbnail.src
+            document.querySelector("#pic-name").innerHTML = thumbnail.alt
+            document.querySelector("#pic-info").innerHTML = thumbnail.about
+            document.querySelector(".cover").style.height = document.querySelector("html").scrollHeight+"px"
+            document.querySelector(".cover").style.width = document.querySelector("html").scrollWidth+"px"
+        }
+        const showImage = function (image) {
+            const thumbnail = document.createElement("img")
+            thumbnail.className = "picture"
+            thumbnail.src = image.filename
+            thumbnail.alt = image.title
+            thumbnail.about = image.description
+            section.appendChild(thumbnail)
+            thumbnail.addEventListener("click",()=>{
+                openImage(thumbnail)
+            })
+        }
+        const loadImages = (filterString) => {
+
+            section.innerHTML = ""
+            fetch("./images.json")
+                .then(res => res.json())
+                .then(data =>{
+                    data.forEach(image => {
+                        if(image.title.indexOf(filterString)!==-1){
+                            showImage(image);
+                        }
+                    })
+                    ord.sort(order, true);
+                })
+
+        }
+        loadImages(filterString)
+        function closeModal(){
+            document.querySelector(".cover").style.display = "none";
+            playing = true
+            playButtonToggle()
+        }
+
+        document.querySelector(".right-arrow").addEventListener("click",rightArrow)
+        document.querySelector(".left-arrow").addEventListener("click",leftArrow)
+
+    </script>
+
+</body>
+</html>

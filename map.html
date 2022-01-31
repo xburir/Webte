@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="routing/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+
+
+
+</head>
+    <body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">O mne</a>
+                </li>
+                <li>
+                    <a href="rozvrh.html">Rozvrh</a>
+                </li>
+                <li>
+                    <a href="zivotopis.html">Životopis</a>
+                </li>
+                <li>
+                    <a href="hover.html">Hover</a>
+                </li>
+                <li>
+                    <a href="form.html">Formulár</a>
+                </li>
+                <li>
+                    <a href="table.html">Tabuľka</a>
+                </li>
+                <li class="selected">
+                    <a href="map.html">Mapa</a>
+                </li>
+                <li>
+                    <a href="graph.html">Graf</a>
+                </li>
+                <li>
+                    <a href="library.html">Knižnica</a>
+                </li>
+                <li>
+                    <a href="fotogaleria.html">Fotogaléria</a>
+                </li>
+                <li>
+                    <a href="game.html">Hra</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+    <div class="mapWrapper"><div id="map"></div></div>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="routing/leaflet-routing-machine.js"></script>
+    <script>
+        let mymap = L.map('map').setView([48.15283, 17.07334], 17);
+        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=XWUZQNX6jw6EJE0Mv7jp', {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+            maxZoom: 19,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(mymap);
+
+        const iconScaleBus = 0.8;
+        const iconScaleTramway = 0.5;
+        const busStopIcon = L.icon({
+            iconUrl: "http://simpleicon.com/wp-content/uploads/bus.png",
+            iconSize: [51.2*iconScaleBus, 51.2*iconScaleBus],
+            iconAnchor: [25.6*iconScaleBus, 51.2*iconScaleBus],
+            popupAnchor: [0, -32]
+        });
+
+        const tramWayStopIcon = L.icon({
+            iconUrl: "https://cdn-icons-png.flaticon.com/512/66/66462.png",
+            iconSize: [51.2*iconScaleTramway, 51.2*iconScaleTramway],
+            iconAnchor: [25.6*iconScaleTramway, 51.2*iconScaleTramway],
+            popupAnchor: [0, -32]
+        });
+
+
+        L.marker([48.15409,17.07512],{ icon: busStopIcon  }).addTo(mymap).bindPopup("<h2>Zoo</h2><div class='linkyWrapper'><div class='zelena linka'>31</div><div class='zelena linka'>39</div><div class='nocna linka'>N31</div></div>");
+        L.marker([48.15457,17.07456],{ icon: busStopIcon  }).addTo(mymap).bindPopup("<h2>Zoo</h2><div class='linkyWrapper'><div class='zelena linka'>31</div><div class='zelena linka'>39</div><div class='nocna linka'>N31</div></div>");
+        L.marker([48.15461,17.07578],{ icon: busStopIcon  }).addTo(mymap).bindPopup("<h2>Zoo</h2><div class='linkyWrapper'><div class='siva linka'>30</div><div class='siva linka'>32</div><div class='siva linka'>37</div><div class='siva linka'>92</div><div class='siva linka'>192</div><div class='nocna linka'>N29</div></div>");
+        L.marker([48.15402,17.07691],{ icon: busStopIcon  }).addTo(mymap).bindPopup("<h2>Zoo</h2><div class='linkyWrapper'><div class='siva linka'>30</div><div class='siva linka'>32</div><div class='siva linka'>37</div><div class='siva linka'>92</div><div class='siva linka'>192</div><div class='nocna linka'>N29</div></div>");
+        L.marker([48.148105,17.072472],{ icon: tramWayStopIcon  }).addTo(mymap).bindPopup("<h2>Botanická Záhrada</h2><div class='linkyWrapper'><div class='modra linka'>4</div><div class='zlta linka'>9</div></div>");
+        L.marker([48.148109,17.071775],{ icon: tramWayStopIcon  }).addTo(mymap).bindPopup("<h2>Botanická Záhrada</h2><div class='linkyWrapper'><div class='modra linka'>4</div><div class='zlta linka'>9</div></div>");
+        L.marker([48.14829,17.0720285],{ icon: busStopIcon  }).addTo(mymap).bindPopup("<h2>Botanická Záhrada</h2><div class='linkyWrapper'><div class='siva linka'>29</div><div class='siva linka'>32</div><div class='nocna linka'>N29</div><div class='nocna linka'>N33</div><div class='nocna linka'>N34</div></div>");
+        L.marker([48.14788,17.0723],{ icon: busStopIcon  }).addTo(mymap).bindPopup("<h2>Botanická Záhrada</h2><div class='linkyWrapper'><div class='siva linka'>29</div><div class='siva linka'>32</div><div class='nocna linka'>N29</div><div class='nocna linka'>N33</div><div class='nocna linka'>N34</div></div>");
+
+
+
+
+        const mygeoJSONStyle = {
+            "color": "#ff7800",
+            "weight": 5,
+            "opacity": 0.65
+        };
+
+        const blocksOnFei = {
+            "type":"FeatureCollection",
+            "features":[
+                {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[17.07281661,48.15297658],[17.07387658,48.15296651],[17.07387252,48.15282839],[17.07281037,48.15283376],[17.07281661,48.15297658]]]},"id":"546291b4-da52-4b48-b9fe-a9cfad8dcfae","properties":{"name":"C", "popupContent":"<h3 class='headerInMap'>Blok C</h3><ul class='institutesInMap'><li>Ústav elektroenergetiky a aplikovanej elektrotechniky</li><li>Ústav informatiky a matematiky</li></ul>"}},
+                {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[17.07386829,48.15196258],[17.07387034,48.15182578],[17.07255337,48.15182846],[17.07255337,48.15196983],[17.07386829,48.15196258]]]},"id":"31626505-6a20-45a9-846c-c7afe5027c2c","properties":{"name":"A", "popupContent":"<h3 class='headerInMap'>Blok A</h3><ul class='institutesInMap'><li>Inštitút komunikácie a aplikovanej lingvistiky</li><li>Ústav jadrového a fyzikálneho inžinierstva</li></ul>"}},
+                {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[17.07436063,48.15246171],[17.07436197,48.15232661],[17.0741769,48.1523275],[17.07417421,48.15230156],[17.07410045,48.15230156],[17.07410314,48.15232571],[17.07299404,48.15233108],[17.07299807,48.1524635],[17.07436063,48.15246171]]]},"id":"e7879953-8c34-49cc-b67c-2b708d522b6a","properties":{"name":"B", "popupContent":"<h3 class='headerInMap'>Blok B</h3><ul class='institutesInMap'><li>Ústav elektrotechniky</li><li>Ústav multimediálnych informačných a komunikačných technológií</li></ul>"}},
+                {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[17.07281566,48.15398503],[17.07388426,48.15397761],[17.07388582,48.15383761],[17.07281928,48.15384074],[17.07281566,48.15398503]]]},"id":"d10944f6-ab8b-4c98-a694-9deb89dc98f3","properties":{"name":"E", "popupContent":"<h3 class='headerInMap'>Blok E</h3><ul class='institutesInMap'><li>Ústav elektroniky a fotoniky</li></ul>"}},
+                {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[17.07319607,48.15347474],[17.07436663,48.15347192],[17.07436663,48.15332982],[17.07418496,48.15333818],[17.07418178,48.15331101],[17.07412009,48.15331011],[17.07411741,48.15333427],[17.07319607,48.15333964],[17.07319607,48.15347474]]]},"id":"d8c3bdc8-6b3e-4860-b2a8-1230918b238c","properties":{"name":"D", "popupContent":"<h3 class='headerInMap'>Blok D</h3><ul class='institutesInMap'><li>Ústav automobilovej mechatroniky</li><li>Ústav robotiky a kybernetiky</li></ul>"}}
+            ]};
+
+        L.geoJSON(blocksOnFei).addTo(mymap);
+
+
+
+        function onEachFeature(feature, layer) {
+            // does this feature have a property named popupContent?
+            if (feature.properties && feature.properties.popupContent) {
+                layer.bindPopup(feature.properties.popupContent);
+            }
+        }
+
+        L.geoJSON(blocksOnFei, {
+            style: mygeoJSONStyle,
+            onEachFeature: onEachFeature
+
+        }).addTo(mymap);
+
+        L.Routing.control({
+            waypoints: [
+                L.latLng(null),
+                L.latLng(48.15180,17.073)
+            ],
+            routeWhileDragging: true,
+            geocoder: L.Control.Geocoder.nominatim()
+        }).addTo(mymap);
+
+
+        mymap.addControl(new L.Control.Fullscreen());
+
+    </script>
+
+
+</body>
+</html>

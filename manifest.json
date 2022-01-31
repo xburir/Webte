@@ -1,0 +1,28 @@
+{
+ "name": "Richard's pexeso",
+ "short_name": "Rixeso",
+ "start_url": "./game.html",
+ "display": "standalone",
+ "background_color": "#fff",
+ "theme_color": "#fff",
+ "description": "It's a game.",
+ "icons":   [
+    {
+        "src": "pictures/game_icons/favicon-196x196.png",
+        "sizes": "196x196",
+        "type": "image/png"
+    },
+   {
+     "src": "pictures/game_icons/favicon-512x512.png",
+     "sizes": "512x512",
+     "type": "image/png"
+   },
+   {
+     "src": "pictures/game_icons/favicon-128.png",
+     "sizes": "128x128",
+     "type": "image/png",
+     "purpose": "maskable"
+   }
+ ]
+
+}

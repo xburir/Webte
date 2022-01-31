@@ -1,0 +1,101 @@
+
+
+.flex{
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+}
+
+#pic{
+    position: relative;
+    max-width:100%;
+    width:100%;
+}
+
+.marker{
+    position: absolute;
+    background-color: rgba(0,0,255,0.2);
+    width: 7%;
+    height: 11%;
+    border: black 4px solid;
+    border-radius: 50%;
+}
+
+.marker > div{
+    position: absolute;
+    top: 120%;
+    left: -100%;
+    background-color: white;
+    width: 300%;
+    z-index: 1;
+    border-radius: 10%;
+    border: black 4px solid;
+    opacity: 0;
+    transition: opacity 1s;
+    visibility: hidden;
+    
+}
+
+.marker:hover > div{
+    opacity: 1;
+    visibility: visible;
+
+}
+
+
+
+.marker:hover{
+    background-color: rgba(0,255,0,0.2);
+    transition: 1s;
+}
+
+.marker>div>img{
+    float:left;
+    border: black solid ;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    width: 30%;
+
+}
+
+.marker>div>ul>li{
+    text-align: center;
+    font-size: 130%;
+    margin:  0;
+}
+
+.marker>div>ul{
+    list-style: none;
+    margin: 0;
+}
+
+.marker>div>h3{
+    margin: 5%;
+    font-size: 150%;
+}
+
+#ryko{
+    top: 35%;
+    left: 19%;
+}
+
+#ja{
+    top: 27%;
+    left: 50.25%;
+}
+
+#mara{
+    top: 35%;
+    right: 30%;
+}
+
+#maro{
+    top: 33%;
+    right: 21%;
+}
+
+#lexo{
+    top: 31%;
+    left: 34%;
+}

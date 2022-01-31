@@ -1,0 +1,139 @@
+#fotogaleria{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    justify-items: center;
+}
+
+#fotogaleria > img{
+
+    transition: 0.3s;
+    border: 4px solid #cefc72;
+}
+
+#fotogaleria > img:hover{
+    position: relative;
+    z-index: 51;
+    transform: scale(1.2);
+}
+
+#playStopButton{
+    width: 30px;
+    height: 30px;
+    margin: 20px;
+}
+
+#playStopButtonWrapper{
+    margin: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    border-radius: 2px;
+    border: 1px black solid;
+}
+
+#selectedPhoto{
+    display: flex;
+
+    height: 85vh;
+    border: 2px black solid;
+    margin: 20px;
+}
+
+.picture{
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}
+
+.navigation{
+    position: absolute;
+    top: 50%;
+    opacity: 0;
+}
+
+.left-arrow{
+    left: -30px;
+}
+.right-arrow{
+    right: -30px;
+}
+.info-about-picture{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px;
+    align-items: center;
+    min-width: 300px;
+}
+
+.info-about-picture p{
+    font-size: x-large;
+    text-align: center;
+}
+
+.navigation img{
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    background-color: white;
+    border: 4px black solid;
+}
+
+#playStopButtonWrapper > .inside > div{
+    width: fit-content;
+    margin: 0;
+}
+
+
+@media only screen and (max-width: 1300px){
+    #fotogaleria{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #selectedPhoto{
+        width: 80vw;
+        height: unset;
+    }
+    .modal{
+        width: 90vw;
+        height: fit-content;
+        flex-direction: column;
+    }
+}
+
+
+@media only screen and (max-width: 1000px){
+    #fotogaleria{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #selectedPhoto{
+        width: 70vw;
+        height: unset;
+    }
+    .modal{
+        width: 80vw;
+        height: fit-content;
+        flex-direction: column;
+    }
+}
+
+
+@media only screen and (max-width: 670px){
+    #fotogaleria{
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+    #selectedPhoto{
+        width: 50vw;
+        height: unset;
+    }
+    .modal{
+        width: 70vw;
+        height: fit-content;
+        flex-direction: column;
+    }
+    .info-about-picture{
+        transform: scale(0.7);
+        height: fit-content;
+    }
+}

@@ -1,0 +1,39 @@
+body,html{
+    padding: 0;
+}
+
+header,
+#levelShower,
+#board,
+#gameButtonWrapper,
+.gameInfoModal,
+.gameRulesModal,
+.gameHintModal{
+    display: none;
+}
+
+.cover{
+    display: flex;
+    flex-direction: column;
+    position: static;
+    height: auto;
+    align-items: center;
+}
+
+
+
+.outside > p,
+.outside > h2,
+#gameInfo > h1{
+    font-size: unset;
+}
+
+.outside > p{
+    margin: 0;
+}
+
+.printGameInfo{
+    display: flex;
+    flex-direction: column;
+}
+
